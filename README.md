@@ -10,14 +10,14 @@
 
 | № | Директория | Тема |
 |---:|---|---|
-| 1 | [`python_hw1_introductory_lesson`](python_hw1_introductory_lesson/) | Вводное занятие: первый UI-тест с Playwright |
-| 2 | [`python_hw2_git`](python_hw2_git/) | Git и GitHub: первый тест с Selene |
-| 3 | [`python_hw3_tools_and_libraries`](python_hw3_tools_and_libraries/) | Инструменты и библиотеки: pytest, фикстуры и Selene |
-| 4 | [`python_hw4_python_basics1`](python_hw4_python_basics1/) | Основы Python I: типы данных, коллекции и изменяемость |
-| 5 | [`python_hw5_selene_basics`](python_hw5_selene_basics/) | Selene: поиск элементов и автоматизация формы DemoQA |
-| 6 | [`python_hw6_python_basics2`](python_hw6_python_basics2/) | Основы Python II: условия, циклы и функции |
-| 7 | [`python_hw7_file_work`](python_hw7_file_work/) | Работа с файлами: CSV, XLSX, PDF и ZIP |
-| 8 | [`python_hw8_python_basics3`](python_hw8_python_basics3/) | Основы Python III: ООП, `Product`, `Cart` и pytest |
+| 1 | [`python_hw1_introductory_lesson`](/vnasyrov/Python_Education/tree/main/python_hw1_introductory_lesson) | Вводное занятие: первый UI-тест с Playwright |
+| 2 | [`python_hw2_git`](/vnasyrov/Python_Education/tree/main/python_hw2_git) | Git и GitHub: первый тест с Selene |
+| 3 | [`python_hw3_tools_and_libraries`](/vnasyrov/Python_Education/tree/main/python_hw3_tools_and_libraries) | Инструменты и библиотеки: pytest, фикстуры и Selene |
+| 4 | [`python_hw4_python_basics1`](/vnasyrov/Python_Education/tree/main/python_hw4_python_basics1) | Основы Python I: типы данных, коллекции и изменяемость |
+| 5 | [`python_hw5_selene_basics`](/vnasyrov/Python_Education/tree/main/python_hw5_selene_basics) | Selene: поиск элементов и автоматизация формы DemoQA |
+| 6 | [`python_hw6_python_basics2`](/vnasyrov/Python_Education/tree/main/python_hw6_python_basics2) | Основы Python II: условия, циклы и функции |
+| 7 | [`python_hw7_file_work`](/vnasyrov/Python_Education/tree/main/python_hw7_file_work) | Работа с файлами: CSV, XLSX, PDF и ZIP |
+| 8 | [`python_hw8_python_basics3`](/vnasyrov/Python_Education/tree/main/python_hw8_python_basics3) | Основы Python III: ООП, `Product`, `Cart` и pytest |
 
 ## Структура репозитория
 
