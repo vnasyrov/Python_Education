@@ -65,3 +65,6 @@ class RegistrationPage:
 
     def fill_city(self, value):
         browser.element('#react-select-4-input').type(value).press_enter()
+
+    def submit(self):
+        browser.element('#submit').perform(command.js.click)

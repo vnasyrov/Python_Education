@@ -1,4 +1,4 @@
-from selene import browser, have, be, command
+from selene import browser, have, be, commaЫnd
 
 from pages.registration_page import RegistrationPage
 
@@ -39,7 +39,7 @@ def test_demoqa_form():
     registration_page.fill_city('Agra')
 
     # Submit
-    browser.element('#submit').perform(command.js.click)
+    registration_page.submit()
     browser.element('.table-responsive').should(be.visible)
     browser.element('#example-modal-sizes-title-lg').should(have.exact_text('Thanks for submitting the form'))
     browser.all('.table-responsive td:nth-child(2)').should(have.exact_texts(
