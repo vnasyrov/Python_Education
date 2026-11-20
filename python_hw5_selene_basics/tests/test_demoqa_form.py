@@ -1,63 +1,36 @@
-from datetime import datetime
-
 from selene import browser, have, be, command
 
-from utils import close_modal, path
+from pages.registration_page import RegistrationPage
 
 
 def test_demoqa_form():
-
-    browser.open('/')
+    registration_page = RegistrationPage()
+    registration_page.open()
 
     # Убираем баннер и футер, мешающие кнопке Submit
     browser.driver.execute_script("document.querySelector('footer').remove()")
 
     # Основные поля
-    browser.element("#firstName").type('Valeriy')
-    browser.element("#lastName").type('Nasyrov')
-    browser.element("#userEmail").type('user@example.com')
-    browser.element("#gender-radio-1").click()
-    browser.element("#userNumber").type('9999999999')
+    registration_page.fill_first_name('Valeriy')
+    registration_page.fill_last_name('Nasyrov')
+    registration_page.fill_email('user@example.com')
+    registration_page.fill_gender('Male')
+    registration_page.fill_phone('9999999999')
 
     # Дата рождения
-    today = datetime.today().strftime('%d %B %Y')
-
-    browser.element('#dateOfBirthInput').should(have.value(today))
-    browser.element('#dateOfBirthInput').click()
-    browser.element('.react-datepicker__month-select').element('option[value="6"]').click()
-    browser.element('.react-datepicker__year-select').element('option[value="1993"]').click()
-    browser.element('.react-datepicker__day--012').click()
-    # browser.element('#dateOfBirthInput').set(value='12 Jul 1993') <<< Альтернативный метод
-    browser.element('#dateOfBirthInput').should(have.value('12 Jul 1993'))
+    registration_page.fill_birthday(12, 'July', 1993)
 
     # Subjects
-    browser.element('#subjectsInput').should(be.blank)
-    browser.element('#subjectsInput').type('Maths')
-    close_modal()
-    browser.element('#subjectsInput').press_enter()
-    browser.element('.subjects-auto-complete__multi-value__label').should(have.text('Maths'))
-    browser.element('.subjects-auto-complete__multi-value__remove').click()
-    browser.element('#subjectsInput').should(be.blank)
-    browser.element('#subjectsInput').type('Maths')
-    close_modal()
-    browser.element('#subjectsInput').press_enter()
-
-    # .modal-content
-    # #closeLargeModal
+    registration_page.fill_subject('Maths')
 
     #Hobbies
-    browser.element('#hobbies-checkbox-1').click()
-    browser.element('#hobbies-checkbox-2').click()
-    browser.element('#hobbies-checkbox-3').click()
-    browser.element('#hobbies-checkbox-1').should(have.js_property('checked', True))
-    browser.element('#hobbies-checkbox-2').should(have.js_property('checked', True))
-    browser.element('#hobbies-checkbox-3').should(have.js_property('checked', True))
+    registration_page.fill_hobbies('Sports', 'Reading', 'Music')
 
     # Picture
-    browser.element('#uploadPicture').send_keys(path('1.jpg'))
+    registration_page.upload_picture('1.jpg')
 
     # Current Address
-    browser.element("#currentAddress").type('Los Angeles')
+    registration_page.fill_address('Los Angeles')
 
     # State
     browser.element('#react-select-3-placeholder').should(have.text('Select State'))
@@ -68,7 +41,9 @@ def test_demoqa_form():
     browser.element('#react-select-3-listbox').all('[role="option"]'
                     ).should(have.exact_texts('NCR', 'Uttar Pradesh', 'Haryana', 'Rajasthan'))
     browser.element('#react-select-4-input').should(have.js_property('disabled', True)) # проверяем что выбор города недоступен до выбора страны
-    browser.element('#react-select-3-input').type('Uttar Pradesh').press_enter()
+    # browser.element('#react-select-3-input').type('Uttar Pradesh').press_enter()
+    registration_page.fill_state('Uttar Pradesh')
+
     browser.element('#react-select-3-listbox').should(be.not_.visible)
 
     # City
