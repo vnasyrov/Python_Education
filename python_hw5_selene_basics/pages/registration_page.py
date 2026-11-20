@@ -5,6 +5,8 @@ from utils import close_modal, path
 class RegistrationPage:
     def open(self):
         browser.open('/automation-practice-form')
+        # Убираем баннер и футер, мешающие кнопке Submit
+        browser.driver.execute_script("document.querySelector('footer').remove()")
 
     def fill_first_name(self, value):
         browser.element('#firstName').type(value)
@@ -68,3 +70,20 @@ class RegistrationPage:
 
     def submit(self):
         browser.element('#submit').perform(command.js.click)
+
+    def should_have_registered(self, full_name, email, gender, phone, birthday, subjects, hobbies, picture, current_address, state_city):
+        browser.element('.table-responsive').should(be.visible)
+        browser.element('#example-modal-sizes-title-lg').should(have.exact_text('Thanks for submitting the form'))
+        browser.all('.table-responsive td:nth-child(2)').should(have.exact_texts(
+
+            full_name,
+            email,
+            gender,
+            phone,
+            birthday,
+            subjects,
+            hobbies,
+            picture,
+            current_address,
+            state_city
+        ))

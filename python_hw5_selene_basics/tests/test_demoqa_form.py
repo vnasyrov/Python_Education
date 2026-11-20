@@ -1,4 +1,4 @@
-from selene import browser, have, be, commaЫnd
+from selene import browser, have, be, command
 
 from pages.registration_page import RegistrationPage
 
@@ -6,9 +6,6 @@ from pages.registration_page import RegistrationPage
 def test_demoqa_form():
     registration_page = RegistrationPage()
     registration_page.open()
-
-    # Убираем баннер и футер, мешающие кнопке Submit
-    browser.driver.execute_script("document.querySelector('footer').remove()")
 
     # Основные поля
     registration_page.fill_first_name('Valeriy')
@@ -40,18 +37,15 @@ def test_demoqa_form():
 
     # Submit
     registration_page.submit()
-    browser.element('.table-responsive').should(be.visible)
-    browser.element('#example-modal-sizes-title-lg').should(have.exact_text('Thanks for submitting the form'))
-    browser.all('.table-responsive td:nth-child(2)').should(have.exact_texts(
-
-        'Valeriy Nasyrov',
-        'user@example.com',
-        'Male',
-        '9999999999',
-        '12 July,1993',
-        'Maths',
-        'Sports, Reading, Music',
-        '1.jpg',
-        'Los Angeles',
-        'Uttar Pradesh Agra'
-    ))
+    registration_page.should_have_registered(
+        full_name='Valeriy Nasyrov',
+        email='user@example.com',
+        gender='Male',
+        phone='9999999999',
+        birthday='12 July,1993',
+        subjects='Maths',
+        hobbies='Sports, Reading, Music',
+        picture='1.jpg',
+        current_address='Los Angeles',
+        state_city='Uttar Pradesh Agra'
+    )
