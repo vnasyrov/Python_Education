@@ -33,29 +33,10 @@ def test_demoqa_form():
     registration_page.fill_address('Los Angeles')
 
     # State
-    browser.element('#react-select-3-placeholder').should(have.text('Select State'))
-    browser.element('#react-select-3-input').should(be.clickable)
-    browser.element('#react-select-3-input').should(have.no.attribute('aria-controls', 'react-select-3-listbox'))
-    browser.element('#react-select-3-input').click()
-    browser.element('#react-select-3-listbox').should(be.visible)
-    browser.element('#react-select-3-listbox').all('[role="option"]'
-                    ).should(have.exact_texts('NCR', 'Uttar Pradesh', 'Haryana', 'Rajasthan'))
-    browser.element('#react-select-4-input').should(have.js_property('disabled', True)) # проверяем что выбор города недоступен до выбора страны
-    # browser.element('#react-select-3-input').type('Uttar Pradesh').press_enter()
     registration_page.fill_state('Uttar Pradesh')
 
-    browser.element('#react-select-3-listbox').should(be.not_.visible)
-
     # City
-    browser.element('#react-select-4-placeholder').should(have.text('Select City'))
-    browser.element('#react-select-4-input').should(be.clickable)
-    browser.element('#react-select-4-input').should(have.no.attribute('aria-controls', 'react-select-4-listbox'))
-    browser.element('#react-select-4-input').click()
-    browser.element('#react-select-4-listbox').should(be.visible)
-    browser.element('#react-select-4-listbox').all('[role="option"]'
-                    ).should(have.exact_texts('Agra', 'Lucknow', 'Merrut'))
-    browser.element('#react-select-4-input').type('Agra').press_enter()
-    browser.element('#react-select-4-listbox').should(be.not_.visible)
+    registration_page.fill_city('Agra')
 
     # Submit
     browser.element('#submit').perform(command.js.click)

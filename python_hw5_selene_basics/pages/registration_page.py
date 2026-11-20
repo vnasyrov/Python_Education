@@ -62,3 +62,6 @@ class RegistrationPage:
 
     def fill_state(self, value):
         browser.element('#react-select-3-input').type(value).press_enter()
+
+    def fill_city(self, value):
+        browser.element('#react-select-4-input').type(value).press_enter()
