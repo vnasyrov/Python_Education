@@ -14,15 +14,18 @@ registration_page.fill_birthday(12, 'July', 1993)   # тест говорит Ч
 ```
 project/
 ├── pages/
-│   ├── __init__.py          ← делает папку пакетом
-│   └── registration_page.py ← класс страницы
+│   ├── __init__.py               ← делает папку пакетом
+│   └── registration_page.py      ← класс страницы
 ├── tests/
-│   └── test_demoqa_form.py
-└── conftest.py              ← настройки: base_url, таймаут
+│   ├── test_demoqa_form.py       ← ДО: тест без PageObject (для сравнения)
+│   └── test_with_page_objects.py ← ПОСЛЕ: тест через RegistrationPage
+├── utils.py                      ← close_modal, path
+└── conftest.py                   ← настройки: base_url, таймаут
 ```
 - модуль = файл `.py`, пакет = папка с модулями
 - точка в импорте = «внутри»: `from pages.registration_page import RegistrationPage`
 - `base_url` = только сайт (`https://demoqa.com`), путь страницы живёт в `open()`
+- открой оба теста рядом: ~70 строк селекторов vs ~25 строк, которые читаются как анкета
 
 ## 3. Ловушка «кофемашина»
 Метод принимает параметр, но внутри его не использует:
