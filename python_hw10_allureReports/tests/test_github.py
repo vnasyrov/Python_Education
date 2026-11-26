@@ -1,14 +1,14 @@
-from selene import browser, by, be
+from selene import browser, by, be, have
 
 
 def test_github():
     browser.open("https://github.com")
 
-    browser.element(".header-search-input").click()
-    browser.element(".header-search-input").type("eroshenkoam/allure-example")
-    browser.element(".header-search-input").press_enter()
+    browser.element('[aria-label="Search or jump to, type / to search"]').click()
+    browser.element('[aria-label="Search or jump to"]').type("vnasyrov/Python_Education")
+    browser.element('[aria-label="Search or jump to"]').press_enter()
 
-    browser.element(by.link_text("eroshenkoam/allure-example")).click()
-    browser.element("#issues-tab").click()
+    browser.element(by.link_text("vnasyrov/Python_Education")).click()
+    browser.element('[data-tab-item="issues"]').click()
 
-    browser.element(by.partial_text("#76")).should(be.visible)
+    browser.element('[data-testid="issue-listitem-title-link"]').should(have.text("Тестовый Issue"))
